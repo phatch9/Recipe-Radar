@@ -30,7 +30,7 @@ input {
   margin-bottom: 1rem;
 }
 
-button {
+/* button {
   width: 100%;
   padding: 0.5rem 1rem;
   background-color: #7f21eb;
@@ -43,7 +43,7 @@ button {
 button:hover {
   background-color: #6c13d1;
   cursor: pointer;
-}
+} */
 
 main {
   display: flex;
@@ -89,7 +89,7 @@ ul {
   margin-bottom: 1rem;
 }
 
-a {
+/* a { //create own styling for menu items
   text-decoration: none;
   background-color: #7f21eb;
   color: #f3f3f3;
@@ -100,7 +100,7 @@ a {
 a:hover {
   background-color: #6c13d1;
   cursor: pointer;
-}
+} */
 
 @media only screen and (max-width: 1024px) {
   .meals {
