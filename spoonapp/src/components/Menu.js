@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import "./Menu.css"; // Import the css 
+
 function Menu(){
     const [mealData, setMealData] = useState(null);
     const[calories, setCals] = useState("");
