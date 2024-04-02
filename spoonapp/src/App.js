@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MealList from "./MealList";
-import Navbar from "./components/Navbar";
-import Menu from "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Menu.js";
+import Navbar from "./components/Navbar.js";
+import Menu from "./components/Menu.js";
 import HeroSection from "./components/HeroSection.js";
 function App() {
   // const [mealData, setMealData] = useState(null);
