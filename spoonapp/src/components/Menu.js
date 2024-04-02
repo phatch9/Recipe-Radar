@@ -5,9 +5,9 @@ import "./Menu.css"; // Import the css
 function Menu(){
     const [mealData, setMealData] = useState(null);
     const[calories, setCals] = useState("");
-     const[protein, setPro] = useState("");
-     const[fiber, setFib] = useState("");
-     const[carbs, setCarbs] = useState("");
+    const[protein, setPro] = useState("");
+    const[fiber, setFib] = useState("");
+    const[carbs, setCarbs] = useState("");
     function setCalories(cals) {
         setCals(cals.target.value)
     }
