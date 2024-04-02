@@ -12,7 +12,7 @@ class Navbar extends Component{
         return(
             <nav className = "navbar-items">
                 <h1 className = "navbar-logo">
-                <img className = 'navbar-img' src={require('images/RRlogo.png') } />
+                <img className = 'navbar-img' src={require('/Users/phch/Documents/recipe-radar/Recipe-Radar/spoonapp/src/images/RRlogo.png') } />
                 </h1>
                 <div className = "menu-icon" onClick = {this.handleClick}>
                     <i className = {this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
