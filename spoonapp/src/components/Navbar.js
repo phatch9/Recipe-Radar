@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { MenuItems } from './MenuItems';
-import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.css";
-import {NavButton} from '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbutton.js';
+import "./Navbar.css";
+import {NavButton} from './Navbutton.js';
 class Navbar extends Component{
     
     state = {clicked: false}
@@ -12,7 +12,7 @@ class Navbar extends Component{
         return(
             <nav className = "navbar-items">
                 <h1 className = "navbar-logo">
-                <img className = 'navbar-img' src={require('/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/images/RRlogo.png') } />
+                <img className = 'navbar-img' src={require('./RRlogo.png') } />
                 </h1>
                 <div className = "menu-icon" onClick = {this.handleClick}>
                     <i className = {this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
