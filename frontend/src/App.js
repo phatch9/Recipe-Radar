@@ -5,14 +5,6 @@ import './App.css';
 //<Route path='/' exact component={Home} />
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <header className="App-header">
-        <img src= "RecipeLogo.jpg" className="App-logo" alt="logo" />
-        
-      </header>
-    </div>
-=======
     <>
     <Router>
       <navbar/>
@@ -21,7 +13,6 @@ function App() {
       </Switch>
     </Router>
     </>
->>>>>>> main
   );
 }
 
