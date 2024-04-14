@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import MealList from "./MealList";
 import Navbar from "./components/Navbar";
-import Menu from "/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Menu.js";
-import MenuPage from "/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/MenuPage.js";
+import Menu from "./components/Menu.js";
+import MenuPage from "./components/MenuPage.js";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 import HeroSection from "./components/HeroSection.js";
 function App() {
   // const [mealData, setMealData] = useState(null);
@@ -39,7 +41,7 @@ function App() {
     // </div>
     <div className = "App">
       <Navbar/>
-      <MenuPage/>
+      <HeroSection/>
     </div>
   );
 }
