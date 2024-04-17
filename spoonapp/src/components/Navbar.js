@@ -1,36 +1,80 @@
-import React, { Component, useState } from 'react';
-import { MenuItems } from './MenuItems';
-import "/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.css";
-import {NavButton} from '/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Navbutton.js';
-class Navbar extends Component{
-    
-    state = {clicked: false}
-    handleClick = () => {
-        this.setState({clicked: !this.state.clicked})
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.css';
+
+function Navbar() {
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
     }
-    render(){
-        return(
-            <nav className = "navbar-items">
-                <h1 className = "navbar-logo">
-                <img className = 'navbar-img' src={require('/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/images/RRlogo.png') } />
-                </h1>
-                <div className = "menu-icon" onClick = {this.handleClick}>
-                    <i className = {this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-                </div>
-                <ul className = {this.state.clicked ? 'nav-menu active': 'nav-menu'}>
-                    {MenuItems.map((item,index) =>{
-                        return(
-                            <li key = {index}>
-                                <a className = {item.class} href = {item.url}>
-                                {item.title}
-                                </a>
-                            </li>
-                        )
-                    })}
-                </ul>
-                <NavButton>Sign Up</NavButton>
-            </nav>
-        );
-    }
+  };
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener('resize', showButton);
+
+  return (
+    <>
+      <nav className='navbar'>
+        <div className='navbar-container'>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            
+            <img className = 'logo' src = {require("/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/images/RRlogo.png")}></img>          
+          </Link>
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <li className='nav-item'>
+              <Link 
+              to='/' 
+              className='nav-links' 
+              onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/menu'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Menu
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/login'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Login
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/signup'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Sign Up
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
+  );
 }
+
 export default Navbar;

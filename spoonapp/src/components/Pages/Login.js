@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-import "./SignUp.css"; // Import the css 
+import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/Login.css"; // Import the css 
 
-function SignUp(){
-    const[username, setUsername] = useState("");
+function Login(){
     const[email, setEmail] = useState("");
     const[emailError, setEmailError] = useState("");
     const[password, setPass] = useState("");
 
-    function setUser(username) {
-        setUsername(username.target.value)
-    }
     function setUserEmail(email) {
         setEmail(email.target.value)
     }
-    function validateEmail() {
+    function validateEmail() { //THIS MIGHT CHANGE To check for user authentication
         if (!email.includes('@')) {
             setEmailError("Please enter a valid email address");
         } else {
@@ -23,19 +19,14 @@ function SignUp(){
     function setPassword(password) {
         setPass(password.target.value)
     }
+
     return(
         <div> 
             <br></br>
-            <div className="signup-container">
-                <div className="signup-form-section">
-                    <center><h2>Create Account</h2></center>
+            <div className="login-container">
+                <div className="login-form-section">
+                    <center><h2>Login</h2></center>
                     <form>
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            value={username}
-                            onChange={setUser}
-                        />
                         <input
                             type="email"
                             placeholder="Email Address"
@@ -50,18 +41,18 @@ function SignUp(){
                             value={password}
                             onChange={setPassword}
                         />
-                        <button type="submit" className="create-account">Create Account</button>
+                        <button type="submit" className="login-account-btn">Login</button>
                     </form>
-                    <div className="login-link">
-                        Already have an account? <a href="/Login">Login</a>
+                    <div className="sign-up-link">
+                        Don't have an account? <a href="/SignUp">Sign Up Here</a>
                     </div>
                 </div>
-                <div className="signup-info-section">
-                    <p className="signup-header-text"> <b>Recipe Radar</b> </p>
-                    <p className="signup-subtext">Where Daily Recipes are Simplified</p>
+                <div className="login-info-section">
+                    <p className="login-header-text"> <b>Recipe Radar</b> </p>
+                    <p className="login-subtext">Where Daily Recipes are Simplified</p>
                 </div>
             </div>
         </div>
     );
 }
-export default SignUp;
+export default Login;

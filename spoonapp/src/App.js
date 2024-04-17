@@ -1,48 +1,24 @@
-import React, { useState } from "react";
-import MealList from "./MealList";
-import Navbar from "./components/Navbar";
-import Menu from "./components/Menu.js";
-import MenuPage from "./components/MenuPage.js";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
-import HeroSection from "./components/HeroSection.js";
+import React from 'react';
+import Navbar from '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.js';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Homepage from '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/Homepage.js';
+import Login from '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/Login.js';
+import Menu from '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/MenuPage.js';
+import SignUp from './components/Pages/SignUp';
 function App() {
-  // const [mealData, setMealData] = useState(null);
-  // const [calories, setCalories] = useState(2000);
-
-  // function getMealData() {
-  //   fetch(
-  //     `https://api.spoonacular.com/mealplanner/generate?apiKey=cb1c464d94f142c08b156c5beddade8b&timeFrame=day&targetCalories=${calories}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setMealData(data);
-  //     })
-  //     .catch(() => {
-  //       console.log("error");
-  //     });
-  // }
-
-  // function handleChange(e) {
-  //   setCalories(e.target.value);
-  // }
-
   return (
-    // <div className="App">
-    //   <section className="controls">
-    //     <input
-    //       type="number"
-    //       placeholder="Calories (e.g. 2000)"
-    //       onChange={handleChange}
-    //     />
-    //     <button onClick={getMealData}>Get Daily Meal Plan</button>
-    //   </section>
-    //   {mealData && <MealList mealData={mealData} />}
-    // </div>
-    <div className = "App">
-      <Navbar/>
-      <HeroSection/>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={Homepage} />
+          <Route path='/login' component={Login} />
+          <Route path='/menu' component={Menu} />
+          <Route path='/sign-up' component={SignUp} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
