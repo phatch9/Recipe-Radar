@@ -21,7 +21,7 @@ function AccountPage() {
     return (
         <div className="preferences">
             <div className="account-details">
-                <h2 className="header-underline">Food Allergens:</h2>
+                <h2 className="header-underline">Account Details:</h2>
                 <p>Username: TestUser1</p>
                 <p>Email: user1@gmail.com</p>
             </div>
