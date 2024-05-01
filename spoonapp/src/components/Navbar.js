@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.css';
+import '/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Navbar.css';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -29,7 +29,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             
-            <img className = 'logo' src = {require("/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/images/RRlogo.png")}></img>          
+            <img className = 'logo' src = {require("/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/images/RRlogo.png")}></img>          
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -41,6 +41,14 @@ function Navbar() {
               className='nav-links' 
               onClick={closeMobileMenu}>
                 Home
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link 
+              to='/accountpage' 
+              className='nav-links' 
+              onClick={closeMobileMenu}>
+                Account
               </Link>
             </li>
             <li className='nav-item'>

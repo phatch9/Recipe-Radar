@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Navbutton.css";
+import "/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Navbutton.css";
 
 const STYLES = [
     'btn--primary',
