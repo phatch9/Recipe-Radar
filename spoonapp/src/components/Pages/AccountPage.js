@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/AccountPage.css"; // Import the css 
+import "./AccountPage.css"; // Import the css 
 
 function AccountPage() {
     const [isVegetarian, setIsVegetarian] = useState(false);
