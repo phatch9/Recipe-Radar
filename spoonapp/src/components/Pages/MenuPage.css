@@ -1,19 +1,38 @@
 .user_inputs {
     display: flex;
     flex-direction: column;
-    
+    align-items: center; 
+    justify-content: center; 
+    height: 100; 
 }
 .input--grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 10px;
-    grid-column-gap: 40px;
-    margin-bottom: 20px;
+    grid-gap: 60px; /* Adjust as needed for spacing */
+    width: 50%; /* Adjust width to fit content */
+    margin: auto; 
+    padding-bottom: 20px;
 }
+.input-container label {
+    font-size: 1.5rem; /* Increase the font size for the label */
+    padding-bottom: 10px; /* Adds space between label and input box */
+}
+.input-container input[type="number"] {
+    width: 100%; 
+    font-size: 1.25rem; 
+    padding: 15px; 
+    margin: 10px 10px; /* Optional: Adds space above and below the input */
+}
+
 .btn--recipe {
     background-color: rgb(41, 192, 127);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: large;
+    font-size: 1.5rem;
+    width: 35%;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
 }
 .btn--recipe:hover {
     background-color: rgb(33, 138, 93);
@@ -28,13 +47,13 @@
     padding: 15px;
 }
 .selection label {
-    display: block;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-bottom: 20px;
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: 1.5rem;
 }
 .header--text {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: xx-large;
+    font-size: 2.5rem;
 }

@@ -35,40 +35,24 @@ function Menu(){
     return(
         
         <div className = "user_inputs">
-            <div className="header--text">Find the Perfect Recipe for You!</div>
+            <center><div className="header--text">Find the Perfect Recipe for You!</div></center>
             <div className="input--grid">
-                <section className = "selection">
+                <div className="input-container">
                     <label>Max Calories</label>
-                    <input 
-                    type = "number"
-                    placeholder="Max # of calories"
-                    onChange={setCalories}
-                    />
-                </section>
-                <section className = "selection">
+                    <input type="number" placeholder="Max # of calories" onChange={setCalories} />
+                </div>
+                <div className="input-container">
                     <label>Max Protein</label>
-                    <input
-                    type = "number"
-                    placeholder="Max grams of protein"
-                    onChange={setProtein}
-                    />
-                </section>
-                <section className = "selection">
+                    <input type="number" placeholder="Max grams of protein" onChange={setProtein} />
+                </div>
+                <div className="input-container">
                     <label>Max Fiber</label>
-                    <input
-                    type = "number"
-                    placeholder="Max grams of fiber"
-                    onChange={setFiber}
-                    />
-                </section>
-                <section className = "selection">
+                    <input type="number" placeholder="Max grams of fiber" onChange={setFiber} />
+                </div>
+                <div className="input-container">
                     <label>Max Carbs</label>
-                    <input
-                    type = "number"
-                    placeholder="Max grams of carbs"
-                    onChange={setCarbohydrates}
-                    />
-                </section>
+                    <input type="number" placeholder="Max grams of carbs" onChange={setCarbohydrates} />
+                </div>
             </div>
             <button className="btn--recipe">Generate Recipes</button>
         </div>
