@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/Login.css"; // Import the css 
+import "./Login.css"; // Import the css 
 
 function Login(){
     const[email, setEmail] = useState("");
