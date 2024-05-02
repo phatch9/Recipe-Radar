@@ -1,0 +1,39 @@
+.hero-section-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+  .hero-section{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+  }
+  .hero-section > h1 {
+      display: inline-block;
+      border-radius: 40px;
+      padding-left: 10px;
+      padding-right: 10px;
+      /* background-color:rgba(192,192,192,0.3); */
+      color: #fff;
+      font-size: 100px;
+      margin-top: -100px;
+    }
+  .hero-section > p{
+    display: inline-block;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* background-color:rgba(192,192,192,0.3); */
+    margin-top: 8px;
+    color: #fff;
+    font-size: 32px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  

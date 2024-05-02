@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "/Users/ryantang/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/MenuPage.css"; // Import the css 
+import "/Users/timkim/Desktop/CMPE133/Recipe-Radar/spoonapp/src/components/Pages/MenuPage.css"; // Import the css 
 
 function Menu(){
     const[mealData, setMealData] = useState(null);
