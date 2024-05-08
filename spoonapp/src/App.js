@@ -7,6 +7,8 @@ import AccountPage from './components/Pages/AccountPage';
 import Login from './components/Pages/Login.js';
 import Menu from './components/Pages/MenuPage.js';
 import SignUp from './components/Pages/SignUp';
+import Firebase from "firebase/app";
+import "firebase/auth";
 function App() {
   return (
     <>
