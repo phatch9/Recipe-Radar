@@ -32,19 +32,19 @@ function AccountPage() {
                 console.log(docSnap.data());
                 const userData = docSnap.data();
                 setIsVegan(userData.isVegan); //sets up locally
-                //setIsVegetarian(userData.isVegetarian);
-                // setIsGlutenFree(userData.isGlutenFree);
-                // setIsKetogenic(userData.isKetogenic);
-                // setIsPescetarian(userData.isPescetarian);
-                // setHasPeanuts(userData.hasPeanuts);
-                // setHasSoy(userData.hasSoy);
-                // setHasMilk(userData.hasMilk);
-                // setHasEggs(userData.hasEggs);
-                // setHasWheat(userData.hasWheat);
-                // setHasTreeNuts(userData.hasTreeNuts);
-                // setHasFish(userData.hasFish);
-                // setHasShellFish(userData.hasShellFish);
-                // setHasSesame(userData.hasSesame);
+                setIsVegetarian(userData.isVegetarian);
+                setIsGlutenFree(userData.isGlutenFree);
+                setIsKetogenic(userData.isKetogenic);
+                setIsPescetarian(userData.isPescetarian);
+                setHasPeanuts(userData.hasPeanuts);
+                setHasSoy(userData.hasSoy);
+                setHasMilk(userData.hasMilk);
+                setHasEggs(userData.hasEggs);
+                setHasWheat(userData.hasWheat);
+                setHasTreeNuts(userData.hasTreeNuts);
+                setHasFish(userData.hasFish);
+                setHasShellFish(userData.hasShellFish);
+                setHasSesame(userData.hasSesame);
                 setUserId(user.uid);
                
             }
@@ -53,36 +53,49 @@ function AccountPage() {
             }
         }); 
     };
-    const updateUserData = async() =>{ //keyName = isRestriction/Preference, when called, should give opposite and update the field, will check/uncheck
+    const updateUserData = async(keyName) =>{ //keyName = isRestriction/Preference, when called, should give opposite and update the field, will check/uncheck
         let data = {}
-        let keyName = "isVegetarian";
+        //let keyName = "isVegetarian";
         switch(keyName){
             case "isVegan":
                 data = {"isVegan" : !isVegan};
-            // case "isVegetarian":
-            //     data = {"isVegetarian" : isVegetarian};
-            // case "isGlutenFree":
-            //     data = {"isGlutenFree" : !isGlutenFree};
-            // case "isKetogenic":
-            //     data = {"isKetogenic" : !isKetogenic};
-            // case "isPescetarian":
-            //     data = {"isPescetarian" : !isPescetarian};
-            // case "hasPeanuts":
-            //     data = {"hasPeanuts" : !hasPeanuts};
-            // case "hasSoy":
-            //     data = {"hasSoy" : !hasSoy};
-            // case "hasMilk":
-            //     data = {"hasMilk" : !hasMilk};
-            // case "hasEggs":
-            //     data = {"hasEggs" : !hasEggs};
-            // case "hasWheat":
-            //     data = {"hasWheat" : !hasWheat};
-            // case "hasTreeNuts":
-            //     data = {"hasTreeNuts" : !hasTreeNuts};
-            // case "hasFish":
-            //     data = {"hasFish" : !hasFish};
-            // case "hasShellFish":
-            //     data = {"hasShellFish" : !hasShellFish};
+                break;
+             case "isVegetarian":
+                data = {"isVegetarian" : !isVegetarian};
+                break;
+            case "isGlutenFree":
+                data = {"isGlutenFree" : !isGlutenFree};
+                break;
+            case "isKetogenic":
+                data = {"isKetogenic" : !isKetogenic};
+                break;
+            case "isPescetarian":
+                data = {"isPescetarian" : !isPescetarian};
+                break;
+            case "hasPeanuts":
+                data = {"hasPeanuts" : !hasPeanuts};
+                break;
+            case "hasSoy":
+                data = {"hasSoy" : !hasSoy};
+                break;
+            case "hasMilk":
+                data = {"hasMilk" : !hasMilk};
+                break;
+            case "hasEggs":
+                data = {"hasEggs" : !hasEggs};
+                break;
+            case "hasWheat":
+                data = {"hasWheat" : !hasWheat};
+                break;
+            case "hasTreeNuts":
+                data = {"hasTreeNuts" : !hasTreeNuts};
+                break;
+            case "hasFish":
+                data = {"hasFish" : !hasFish};
+                break;
+            case "hasShellFish":
+                data = {"hasShellFish" : !hasShellFish};
+                break;
         }
         const docRef = doc(database, "Users", userId);
         await updateDoc(docRef, data);
@@ -103,24 +116,24 @@ function AccountPage() {
             </div>
             <div>
                 <h2 className="header-underline">Dietary Preference:</h2>
-                <label><input type="checkbox" checked={isVegetarian} onChange={() => setIsVegetarian(!isVegetarian)} /> Vegetarian </label>
+                <label><input type="checkbox" checked={isVegetarian} onChange={() => { updateUserData("isVegetarian"); setIsVegetarian(!isVegetarian);}} /> Vegetarian </label>
                 <label><input type="checkbox" checked={isVegan} onChange={() => { updateUserData("isVegan"); setIsVegan(!isVegan);} }/> Vegan</label>
-                <label><input type="checkbox" checked={isGlutenFree} onChange={() => setIsGlutenFree(!isGlutenFree)} /> Gluten Free</label>
-                <label><input type="checkbox" checked={isKetogenic} onChange={() => setIsKetogenic(!isKetogenic)} /> Ketogenic</label>
-                <label><input type="checkbox" checked={isPescetarian} onChange={() => setIsPescetarian(!isPescetarian)} /> Pescetarian</label>
+                <label><input type="checkbox" checked={isGlutenFree} onChange={() => { updateUserData("isGlutenFree"); setIsGlutenFree(!isGlutenFree);}} /> Gluten Free</label>
+                <label><input type="checkbox" checked={isKetogenic} onChange={() => { updateUserData("isKetogenic"); setIsKetogenic(!isKetogenic);}} /> Ketogenic</label>
+                <label><input type="checkbox" checked={isPescetarian} onChange={() => { updateUserData("isPescetarian"); setIsPescetarian(!isPescetarian);}} /> Pescetarian</label>
                 {/* <label><input type="checkbox" checked={noPreference} onChange={() => setNoPreference(!noPreference)} /> No Preference</label> */}
             </div>
             <div>
                 <h2 className="header-underline">Food Allergens:</h2>
-                <label><input type="checkbox" checked={hasPeanuts} onChange={() => setHasPeanuts(!hasPeanuts)} /> Peanuts</label>
-                <label><input type="checkbox" checked={hasTreeNuts} onChange={() => setHasTreeNuts(!hasTreeNuts)} /> Tree Nuts</label>
-                <label><input type="checkbox" checked={hasSoy} onChange={() => setHasSoy(!hasSoy)} /> Soy</label>
-                <label><input type="checkbox" checked={hasMilk} onChange={() => setHasMilk(!hasMilk)} /> Milk</label>
-                <label><input type="checkbox" checked={hasEggs} onChange={() => setHasEggs(!hasEggs)} /> Eggs</label>
-                <label><input type="checkbox" checked={hasWheat} onChange={() => setHasWheat(!hasWheat)} /> Wheat</label>
-                <label><input type="checkbox" checked={hasFish} onChange={() => setHasFish(!hasFish)} /> Fish</label>
-                <label><input type="checkbox" checked={hasShellFish} onChange={() => setHasShellFish(!hasShellFish)} /> Shellfish</label>
-                <label><input type="checkbox" checked={hasSesame} onChange={() => setHasSesame(!hasSesame)} /> Sesame</label>
+                <label><input type="checkbox" checked={hasPeanuts} onChange={() => { updateUserData("hasPeanuts"); setHasPeanuts(!hasPeanuts);}} /> Peanuts</label>
+                <label><input type="checkbox" checked={hasTreeNuts} onChange={() => { updateUserData("hasTreeNuts"); setHasTreeNuts(!hasTreeNuts);}} /> Tree Nuts</label>
+                <label><input type="checkbox" checked={hasSoy} onChange={() => { updateUserData("hasSoy"); setHasSoy(!hasSoy);}} /> Soy</label>
+                <label><input type="checkbox" checked={hasMilk} onChange={() => { updateUserData("hasMilk"); setHasMilk(!hasMilk);}} /> Milk</label>
+                <label><input type="checkbox" checked={hasEggs} onChange={() => { updateUserData("hasEggs"); setHasEggs(!hasEggs);}} /> Eggs</label>
+                <label><input type="checkbox" checked={hasWheat} onChange={() => { updateUserData("hasWheat"); setHasWheat(!hasWheat);}} /> Wheat</label>
+                <label><input type="checkbox" checked={hasFish} onChange={() => { updateUserData("hasFish"); setHasFish(!hasFish);}} /> Fish</label>
+                <label><input type="checkbox" checked={hasShellFish} onChange={() => { updateUserData("hasShellFish"); setHasShellFish(!hasShellFish);}} /> Shellfish</label>
+                <label><input type="checkbox" checked={hasSesame} onChange={() => { updateUserData("hasSesame"); setHasShellFish(!hasSesame);}} /> Sesame</label>
             </div>
         </div>
     );
