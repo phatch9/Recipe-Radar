@@ -110,8 +110,7 @@ function AccountPage() {
         <div className="preferences">
             <div className="account-details">
                 <h2 className="header-underline">Account Details:</h2>
-                <p>Username: TestUser1</p>
-                <p>Email: 
+                <p>Email: {}
                 </p>
             </div>
             <div>
