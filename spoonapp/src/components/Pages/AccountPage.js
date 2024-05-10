@@ -24,34 +24,37 @@ function AccountPage() {
     const [hasSesame, setHasSesame] = useState(false);
     //const [userData, setUserData] = useState({});
     const [userId, setUserId] = useState("");
-    const fetchUserData = async() => {
-        auth.onAuthStateChanged(async (user) =>{ // on/off depending on whether user is logged in or not
-            const docRef = doc(database, "Users", user.uid); //move user.uid outside to its own variable
-            const docSnap = await getDoc(docRef);
-            if(docSnap.exists()){ //if user exists, set and load user preferences
-                console.log(docSnap.data());
-                const userData = docSnap.data();
-                setIsVegan(userData.isVegan); //sets up locally
-                setIsVegetarian(userData.isVegetarian);
-                setIsGlutenFree(userData.isGlutenFree);
-                setIsKetogenic(userData.isKetogenic);
-                setIsPescetarian(userData.isPescetarian);
-                setHasPeanuts(userData.hasPeanuts);
-                setHasSoy(userData.hasSoy);
-                setHasMilk(userData.hasMilk);
-                setHasEggs(userData.hasEggs);
-                setHasWheat(userData.hasWheat);
-                setHasTreeNuts(userData.hasTreeNuts);
-                setHasFish(userData.hasFish);
-                setHasShellFish(userData.hasShellFish);
-                setHasSesame(userData.hasSesame);
+    const [email, setEmail] = useState("");
+    const fetchUserData = async () => {
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                setEmail(user.email); // Set the user's email
                 setUserId(user.uid);
-               
+                const docRef = doc(database, "Users", user.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    setIsVegan(userData.isVegan);
+                    setIsVegetarian(userData.isVegetarian);
+                    setIsGlutenFree(userData.isGlutenFree);
+                    setIsKetogenic(userData.isKetogenic);
+                    setIsPescetarian(userData.isPescetarian);
+                    setHasPeanuts(userData.hasPeanuts);
+                    setHasSoy(userData.hasSoy);
+                    setHasMilk(userData.hasMilk);
+                    setHasEggs(userData.hasEggs);
+                    setHasWheat(userData.hasWheat);
+                    setHasTreeNuts(userData.hasTreeNuts);
+                    setHasFish(userData.hasFish);
+                    setHasShellFish(userData.hasShellFish);
+                    setHasSesame(userData.hasSesame);
+                } else {
+                    console.log("No user data found.");
+                }
+            } else {
+                console.log("User is not logged in.");
             }
-            else{
-                console.log("User is not logged in.")
-            }
-        }); 
+        });
     };
     const updateUserData = async(keyName) =>{ //keyName = isRestriction/Preference, when called, should give opposite and update the field, will check/uncheck
         let data = {}
@@ -110,8 +113,7 @@ function AccountPage() {
         <div className="preferences">
             <div className="account-details">
                 <h2 className="header-underline">Account Details:</h2>
-                <p>Email: {}
-                </p>
+                <p>Email: {email || ""}</p> 
             </div>
             <div>
                 <h2 className="header-underline">Dietary Preference:</h2>
