@@ -5,11 +5,11 @@ export default function Meal({ meal }) {
     const [imageUrl, setImageUrl] = useState("");
     const [readyInMinutes, setReadyInMinutes] = useState('');
     const [servings, setServings] = useState('');
-    const [sourceUrl, setSourceUrl] = useState("");
+    const [sourceUrl, setSourceUrl] = useState("");  // Renamed to use the correct API field
 
     useEffect(() => {
         if (meal && meal.id) {
-            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=baa02e633f0644c4901fd0fb28f4b177&includeNutrition=false`;
+            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=ef40e86d05164373b4ba740bedc96f95&includeNutrition=false`;
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -18,23 +18,26 @@ export default function Meal({ meal }) {
                     return response.json();
                 })
                 .then(data => {
+                    console.log("API data:", data); // Log the whole response to see its structure
                     setImageUrl(data.image || '/default-placeholder.png');
                     setReadyInMinutes(data.readyInMinutes);
                     setServings(data.servings);
-                    setSourceUrl(data.sourceUrl); // Store the source URL in the state
+                    setSourceUrl(data.spoonacularSourceUrl || '#'); // Changed to 'spoonacularSourceUrl'
                 })
                 .catch(error => {
                     console.log("Error fetching image data: ", error);
-                    setImageUrl('/default-placeholder.png');
+                    setImageUrl('/default-placeholder.png'); // Fallback image
+                    setSourceUrl('#'); // Fallback URL
                 });
         }
     }, [meal.id]);
 
     const handleGoToRecipe = () => {
-        if (sourceUrl) {
+        if (sourceUrl && sourceUrl !== '#') {
             window.open(sourceUrl, '_blank');
         } else {
             console.log("No valid URL provided.");
+            // Optionally, inform the user that no link is available
         }
     };
 

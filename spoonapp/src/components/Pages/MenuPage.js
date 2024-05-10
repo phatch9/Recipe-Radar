@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./MenuPage.css"; // Import the css 
-import MealList from "./MealList";
+import MealList from "./MealList.js";
 
 function Menu(){
     const[mealData, setMealData] = useState(null);
@@ -31,7 +31,7 @@ function Menu(){
     
     function getMealData() {
         console.log("Generate Button Pressed");
-        const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=baa02e633f0644c4901fd0fb28f4b177&timeFrame=day&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
+        const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=ef40e86d05164373b4ba740bedc96f95&timeFrame=day&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
     
         fetch(apiUrl)
             .then(response => {

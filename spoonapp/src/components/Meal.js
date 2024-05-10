@@ -1,31 +1,55 @@
 import React, { useState, useEffect } from "react";
+import "./Meal.css"; // Import the css
 
 export default function Meal({ meal }) {
-  const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [readyInMinutes, setReadyInMinutes] = useState('');
+    const [servings, setServings] = useState('');
+    const [sourceUrl, setSourceUrl] = useState("");  // Renamed to use the correct API field
 
-  useEffect(() => {
-    fetch(
-      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=cb1c464d94f142c08b156c5beddade8b&includeNutrition=false`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setImageUrl(data.image);
-      })
-      .catch(() => {
-        console.log("error");
-      });
-  }, [meal.id]);
+    useEffect(() => {
+        if (meal && meal.id) {
+            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=baa02e633f0644c4901fd0fb28f4b177&includeNutrition=false`;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("API data:", data); // Log the whole response to see its structure
+                    setImageUrl(data.image || '/default-placeholder.png');
+                    setReadyInMinutes(data.readyInMinutes);
+                    setServings(data.servings);
+                    setSourceUrl(data.spoonacularSourceUrl || '#'); // Changed to 'spoonacularSourceUrl'
+                })
+                .catch(error => {
+                    console.log("Error fetching image data: ", error);
+                    setImageUrl('/default-placeholder.png'); // Fallback image
+                    setSourceUrl('#'); // Fallback URL
+                });
+        }
+    }, [meal.id]);
 
-  return (
-    <article>
-      <h1>{meal.title}</h1>
-      <img src={imageUrl} alt="recipe" />
-      <ul className="instructions">
-        <li>Preparation time: {meal.readyInMinutes} minutes</li>
-        <li>Number of servings: {meal.servings}</li>
-      </ul>
+    const handleGoToRecipe = () => {
+        if (sourceUrl && sourceUrl !== '#') {
+            window.open(sourceUrl, '_blank');
+        } else {
+            console.log("No valid URL provided.");
+            // Optionally, inform the user that no link is available
+        }
+    };
 
-      <a href={meal.sourceUrl}>Go to Recipe</a>
-    </article>
-  );
+    return (
+        <article>
+            <center><b><div className="meal-title">{meal.title}</div></b></center>
+            <img src={imageUrl} alt={meal.title || "Recipe Image"} />
+            <ul className="instructions">
+                <li>Preparation time: {readyInMinutes ? `${readyInMinutes} minutes` : 'N/A'}</li>
+                <li>Number of servings: {servings ? servings : 'N/A'}</li>
+            </ul>
+            <center> <button onClick={handleGoToRecipe} className="go-to-recipe">Go to Recipe</button></center>
+        </article>
+    );
 }
