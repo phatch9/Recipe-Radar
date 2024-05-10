@@ -31,7 +31,7 @@ function Menu(){
     
     function getMealData() {
         console.log("Generate Button Pressed");
-        const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=baa02e633f0644c4901fd0fb28f4b177&timeFrame=day&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
+        const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=51c124678cae4f6f9fed542b9ffa49d7&timeFrame=day&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
     
         fetch(apiUrl)
             .then(response => {

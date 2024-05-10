@@ -9,7 +9,7 @@ export default function Meal({ meal }) {
 
     useEffect(() => {
         if (meal && meal.id) {
-            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=baa02e633f0644c4901fd0fb28f4b177&includeNutrition=false`;
+            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=51c124678cae4f6f9fed542b9ffa49d7&includeNutrition=false`;
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
