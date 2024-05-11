@@ -2,13 +2,14 @@
 
 Website application using Javascriptpts, ReactJS, FireBase
 
-Group W10 Member:
+**Group W10 Member:**
   - Timothy Kim
   - Phat Chau
   - Ryan Tang
 
-[Building and Running] Use FireBase Database to run the application, run these commands below
-Front end:
+**[Building and Running] Use FireBase Database to run the application, use these commands below **
+
+**Front end:**
 
 - git clone https://github.com/phatch9/Recipe-Radar.git
 
@@ -16,7 +17,7 @@ Front end:
 
 - npm start
   
- Database installation:
+** Database installation:**
 
 - npm install firebase
 
