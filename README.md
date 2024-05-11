@@ -17,7 +17,7 @@ Website application using Javascriptpts, ReactJS, FireBase
 
 - npm start
   
-** Database installation:**
+**Database installation:**
 
 - npm install firebase
 
