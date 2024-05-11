@@ -1,6 +1,6 @@
 ## Recipe_Radar 
 
-Website application using Javascriptpts, ReactJS, FireBase
+Website application using Javascript, ReactJS, FireBase
 
 **Group W10 Member:**
   - Timothy Kim
