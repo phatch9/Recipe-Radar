@@ -10,6 +10,7 @@ function MenuPage() {
     const [protein, setProtein] = useState(50);
     const [fiber, setFiber] = useState(20);
     const [carbs, setCarbs] = useState(50);
+    const [loggedIn, setIsLoggedIn] = useState(false);
     const [userPreferences, setUserPreferences] = useState({
         allergens: [],
         diet: []
@@ -21,7 +22,6 @@ function MenuPage() {
             if (user) {
                 const docRef = doc(database, "Users", user.uid);
                 const docSnap = await getDoc(docRef);
-
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     setUserPreferences({
@@ -44,6 +44,7 @@ function MenuPage() {
                             ...(data.isPescetarian ? ["Pescetarian"] : []),
                         ]
                     });
+                    setIsLoggedIn(true);
                 } else {
                     console.log("No user data found");
                 }
@@ -61,7 +62,8 @@ function MenuPage() {
     }
 
     function getMealData() {
-        const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=51c124678cae4f6f9fed542b9ffa49d7&timeFrame=day&intolerances=${userPreferences.allergens.join(',')}&diet=${userPreferences.diet.join(',')}&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
+        if(loggedIn){
+            const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&intolerances=${userPreferences.allergens.join(',')}&diet=${userPreferences.diet.join(',')}&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
         
         fetch(apiUrl)
             .then(response => {
@@ -82,6 +84,10 @@ function MenuPage() {
             .catch(error => {
                 console.log("Error fetching data: ", error);
             });
+        }
+        else{
+            return;
+        }
     }
 
     return (

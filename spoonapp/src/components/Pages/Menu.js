@@ -22,7 +22,7 @@ function setCarbohydrates(carbs) {
 }
     function getMealData() {
     fetch(
-      `https://api.spoonacular.com/mealplanner/generate?apiKey=cb1c464d94f142c08b156c5beddade8b&timeFrame=day&targetCalories=${calories}` //fix to meet all input criteria
+      `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&targetCalories=${calories}` //fix to meet all input criteria
     )
       .then((response) => response.json())
       .then((data) => {

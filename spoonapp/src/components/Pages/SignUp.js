@@ -53,7 +53,7 @@ function SignUp() {
                 });
                 setSuccessMessage("Account created successfully"); // Set success message
                 setTimeout(() => {
-                    history.push("/Login"); // Navigate to login page after 3 seconds
+                    history.push("/AccountPage"); // Navigate to login page after 3 seconds
                 }, 3000);
             }
            

@@ -46,19 +46,19 @@ function AboutUsContent() {
           <h3 className="creator-heading">
             Timothy Kim
           </h3>
-          <img src={require('../images/Black.png')} alt="Timothy Kim" className="headshot" />
+          <img src={require('../images/image_67517953.JPG')} alt="Timothy Kim" className="headshot" />
         </div>
         <div className="ryan">
           <h3 className="creator-heading">
             Ryan Tang
           </h3>
-          <img src={require('../images/Black.png')} alt="Ryan Tang" className="headshot" />
+          <img src={require('../images/image0.jpg')} alt="Ryan Tang" className="headshot" />
         </div>
         <div className="phat">
           <h3 className="creator-heading">
             Phat Chau
           </h3>
-          <img src={require('../images/Black.png')} alt="Phat Chau" className="headshot" />
+          <img src={require('../images/phat.png')} alt="Phat Chau" className="headshot" />
         </div>
       </div>
     </div>

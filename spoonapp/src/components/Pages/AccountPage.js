@@ -22,7 +22,7 @@ function AccountPage() {
     const [hasFish, setHasFish] = useState(false);
     const [hasShellFish, setHasShellFish] = useState(false);
     const [hasSesame, setHasSesame] = useState(false);
-    //const [userData, setUserData] = useState({});
+    const [loggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState("");
     const [email, setEmail] = useState("");
     const fetchUserData = async () => {
@@ -48,16 +48,19 @@ function AccountPage() {
                     setHasFish(userData.hasFish);
                     setHasShellFish(userData.hasShellFish);
                     setHasSesame(userData.hasSesame);
+                    setIsLoggedIn(true);
                 } else {
                     console.log("No user data found.");
                 }
-            } else {
+            } 
+            else {
                 console.log("User is not logged in.");
             }
         });
     };
     const updateUserData = async(keyName) =>{ //keyName = isRestriction/Preference, when called, should give opposite and update the field, will check/uncheck
-        let data = {}
+        if(loggedIn){
+            let data = {}
         //let keyName = "isVegetarian";
         switch(keyName){
             case "isVegan":
@@ -103,6 +106,10 @@ function AccountPage() {
         const docRef = doc(database, "Users", userId);
         await updateDoc(docRef, data);
         console.log("working")
+        }
+        else{
+            return;
+        }
     };
     
     useEffect(() =>{
@@ -117,24 +124,24 @@ function AccountPage() {
             </div>
             <div>
                 <h2 className="header-underline">Dietary Preference:</h2>
-                <label><input type="checkbox" checked={isVegetarian} onChange={() => { updateUserData("isVegetarian"); setIsVegetarian(!isVegetarian);}} /> Vegetarian </label>
-                <label><input type="checkbox" checked={isVegan} onChange={() => { updateUserData("isVegan"); setIsVegan(!isVegan);} }/> Vegan</label>
-                <label><input type="checkbox" checked={isGlutenFree} onChange={() => { updateUserData("isGlutenFree"); setIsGlutenFree(!isGlutenFree);}} /> Gluten Free</label>
-                <label><input type="checkbox" checked={isKetogenic} onChange={() => { updateUserData("isKetogenic"); setIsKetogenic(!isKetogenic);}} /> Ketogenic</label>
-                <label><input type="checkbox" checked={isPescetarian} onChange={() => { updateUserData("isPescetarian"); setIsPescetarian(!isPescetarian);}} /> Pescetarian</label>
+                <label><input type="checkbox" checked={loggedIn && isVegetarian} onChange={() => { updateUserData("isVegetarian"); setIsVegetarian(!isVegetarian);}} /> Vegetarian </label>
+                <label><input type="checkbox" checked={loggedIn && isVegan} onChange={() => { updateUserData("isVegan"); setIsVegan(!isVegan);} }/> Vegan</label>
+                <label><input type="checkbox" checked={loggedIn && isGlutenFree} onChange={() => { updateUserData("isGlutenFree"); setIsGlutenFree(!isGlutenFree);}} /> Gluten Free</label>
+                <label><input type="checkbox" checked={loggedIn && isKetogenic} onChange={() => { updateUserData("isKetogenic"); setIsKetogenic(!isKetogenic);}} /> Ketogenic</label>
+                <label><input type="checkbox" checked={loggedIn && isPescetarian} onChange={() => { updateUserData("isPescetarian"); setIsPescetarian(!isPescetarian);}} /> Pescetarian</label>
                 {/* <label><input type="checkbox" checked={noPreference} onChange={() => setNoPreference(!noPreference)} /> No Preference</label> */}
             </div>
             <div>
                 <h2 className="header-underline">Food Allergens:</h2>
-                <label><input type="checkbox" checked={hasPeanuts} onChange={() => { updateUserData("hasPeanuts"); setHasPeanuts(!hasPeanuts);}} /> Peanuts</label>
-                <label><input type="checkbox" checked={hasTreeNuts} onChange={() => { updateUserData("hasTreeNuts"); setHasTreeNuts(!hasTreeNuts);}} /> Tree Nuts</label>
-                <label><input type="checkbox" checked={hasSoy} onChange={() => { updateUserData("hasSoy"); setHasSoy(!hasSoy);}} /> Soy</label>
-                <label><input type="checkbox" checked={hasMilk} onChange={() => { updateUserData("hasMilk"); setHasMilk(!hasMilk);}} /> Milk</label>
-                <label><input type="checkbox" checked={hasEggs} onChange={() => { updateUserData("hasEggs"); setHasEggs(!hasEggs);}} /> Eggs</label>
-                <label><input type="checkbox" checked={hasWheat} onChange={() => { updateUserData("hasWheat"); setHasWheat(!hasWheat);}} /> Wheat</label>
-                <label><input type="checkbox" checked={hasFish} onChange={() => { updateUserData("hasFish"); setHasFish(!hasFish);}} /> Fish</label>
-                <label><input type="checkbox" checked={hasShellFish} onChange={() => { updateUserData("hasShellFish"); setHasShellFish(!hasShellFish);}} /> Shellfish</label>
-                <label><input type="checkbox" checked={hasSesame} onChange={() => { updateUserData("hasSesame"); setHasShellFish(!hasSesame);}} /> Sesame</label>
+                <label><input type="checkbox" checked={loggedIn && hasPeanuts} onChange={() => { updateUserData("hasPeanuts"); setHasPeanuts(!hasPeanuts);}} /> Peanuts</label>
+                <label><input type="checkbox" checked={loggedIn && hasTreeNuts} onChange={() => { updateUserData("hasTreeNuts"); setHasTreeNuts(!hasTreeNuts);}} /> Tree Nuts</label>
+                <label><input type="checkbox" checked={loggedIn && hasSoy} onChange={() => { updateUserData("hasSoy"); setHasSoy(!hasSoy);}} /> Soy</label>
+                <label><input type="checkbox" checked={loggedIn && hasMilk} onChange={() => { updateUserData("hasMilk"); setHasMilk(!hasMilk);}} /> Milk</label>
+                <label><input type="checkbox" checked={loggedIn && hasEggs} onChange={() => { updateUserData("hasEggs"); setHasEggs(!hasEggs);}} /> Eggs</label>
+                <label><input type="checkbox" checked={loggedIn && hasWheat} onChange={() => { updateUserData("hasWheat"); setHasWheat(!hasWheat);}} /> Wheat</label>
+                <label><input type="checkbox" checked={loggedIn && hasFish} onChange={() => { updateUserData("hasFish"); setHasFish(!hasFish);}} /> Fish</label>
+                <label><input type="checkbox" checked={loggedIn && hasShellFish} onChange={() => { updateUserData("hasShellFish"); setHasShellFish(!hasShellFish);}} /> Shellfish</label>
+                <label><input type="checkbox" checked={loggedIn && hasSesame} onChange={() => { updateUserData("hasSesame"); setHasShellFish(!hasSesame);}} /> Sesame</label>
             </div>
         </div>
     );
