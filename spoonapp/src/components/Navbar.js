@@ -28,10 +28,9 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            
-          <img className='logo' src={require("../images/RRlogo.png")} alt="Recipe Radar Logo"></img>
-
-          
+            <div className='logo-container'>
+              <img className='logo' src={require("../images/RRlogo.png")} alt="Recipe Radar Logo"></img>
+            </div>
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

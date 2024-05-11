@@ -33,7 +33,7 @@ function Login() {
     } else {
       // Add any additional login validation here (e.g., API call to authenticate user)
       // If login is successful, navigate to the Account page
-      history.push("./AccountPage"); // Navigate to the account page
+      history.push("/AccountPage"); // Navigate to the account page
     }
   }
 
