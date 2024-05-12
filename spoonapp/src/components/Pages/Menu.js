@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./Menu.css"; // Import the css 
 
 function Menu(){
-  //Retrieval and setters for paramters of a menu
+  //Retrieval and setters for parameters of a menu
     const [mealData, setMealData] = useState(null);
     const[calories, setCals] = useState("");
      const[protein, setPro] = useState("");
@@ -35,6 +35,7 @@ function setCarbohydrates(carbs) {
       });
   }
     return(
+      //Creation of 4 parameter user input boxes
         <div className = "user_inputs">
             <section className = "selection">
                 <input

@@ -37,11 +37,12 @@ export default function Meal({ meal }) {
             window.open(sourceUrl, '_blank');
         } else {
             console.log("No valid URL provided.");
-            // Optionally, inform the user that no link is available
+            
         }
     };
 
     return (
+        //Returns final version of the recipe for the user
         <article>
             <center><b><div className="meal-title">{meal.title}</div></b></center>
             <img src={imageUrl} alt={meal.title || "Recipe Image"} />

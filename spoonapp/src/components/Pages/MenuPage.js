@@ -72,14 +72,14 @@ function MenuPage() {
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status}`); //Error case: invalid response
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(data => { //Gathers data from API response, shuffles them, and puts them to display in an array
                 console.log('API Response:', data);
                 if (data.meals && Array.isArray(data.meals)) {
-                    shuffleArray(data.meals); // Make sure this function is defined or imported
+                    shuffleArray(data.meals); 
                     setMealData(data.meals);
                 } else {
                     console.error("Expected 'data.meals' to be an array, got:", data);
