@@ -5,6 +5,7 @@ import "./MenuPage.css";
 import MealList from "../MealList";
 
 function MenuPage() {
+    //Setters of updating values for 4 paramters (calories, protein, fiber, and carbs)
     const [mealData, setMealData] = useState(null);
     const [calories, setCalories] = useState(2000);
     const [protein, setProtein] = useState(50);
@@ -21,10 +22,11 @@ function MenuPage() {
             const user = auth.currentUser;
             if (user) {
                 const docRef = doc(database, "Users", user.uid);
-                const docSnap = await getDoc(docRef);
+                const docSnap = await getDoc(docRef); //Stores all the data of a user that's signed in
                 if (docSnap.exists()) {
-                    const data = docSnap.data();
+                    const data = docSnap.data(); //Retrieving only the fields and their values for a user
                     setUserPreferences({
+                        //Getting and setting values of user preferences
                         allergens: [
                             ...(data.hasPeanuts ? ["Peanuts"] : []),
                             ...(data.hasSoy ? ["Soy"] : []),
@@ -55,6 +57,7 @@ function MenuPage() {
     }, []);
 
     function shuffleArray(array) {
+        //Shuffling generated recipes
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]]; // Swap elements
@@ -62,6 +65,7 @@ function MenuPage() {
     }
 
     function getMealData() {
+        //API call to retrieve a recipe based off user's saved criteria
         if(loggedIn){
             const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&intolerances=${userPreferences.allergens.join(',')}&diet=${userPreferences.diet.join(',')}&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
         
@@ -93,6 +97,7 @@ function MenuPage() {
     return (
         <div>
             <section>
+                {/* Elements for the boxes to input parameters for fiber, calories, protein, and carbs*/}
                 <div className="user_inputs">
                     <center><div className="header--text">Find the Perfect Recipe for You!</div></center>
                     <div className="input--grid">
@@ -113,6 +118,7 @@ function MenuPage() {
                             <input type="number" placeholder="Max grams of carbs" onChange={(e) => setCarbs(e.target.value)} />
                         </div>
                     </div>
+                    {/* Button function to generate recipes */}
                     <button className="btn--recipe" onClick={getMealData}>Generate Recipes</button>
                 </div>
             </section>

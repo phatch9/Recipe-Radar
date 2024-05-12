@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './AboutUsContent.css'; // Correct the path to your CSS file
 function AboutUsContent() {
   const [isVisible, setIsVisible] = useState(false);
-
+  //Effect where when scrolling down, the about us section becomes slowly visible
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const targetOffsetTop = document.getElementById('about-us-content').offsetTop;
       const windowHeight = window.innerHeight;
-
       if (scrollTop > targetOffsetTop - windowHeight / 2) {
         setIsVisible(true);
       } else {
@@ -24,6 +23,7 @@ function AboutUsContent() {
 
   return (
     <div id="about-us-content" className={`fade-element ${isVisible ? 'visible' : ''}`}>
+      {/*About us paragraph (right-hand side of the content section)*/}
       <div className="section">
         <h1 className="heading">
           About Us
@@ -39,6 +39,8 @@ function AboutUsContent() {
         </p>
       </div>
       <div className="section">
+        {/*Section for all the headshots(bottom of the content section)*/}
+      <div className="section"></div>
         <h1 className="heading">
           Creators
         </h1>

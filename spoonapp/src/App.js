@@ -10,6 +10,7 @@ import SignUp from './components/Pages/SignUp';
 import Firebase from "firebase/app";
 import "firebase/auth";
 function App() {
+  //Used React.js' Routing function to create hyperlinking between all the pages shown below
   return (
     <>
       <Router>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Menu.css"; // Import the css 
 
 function Menu(){
+  //Retrieval and setters for paramters of a menu
     const [mealData, setMealData] = useState(null);
     const[calories, setCals] = useState("");
      const[protein, setPro] = useState("");
@@ -21,8 +22,9 @@ function setCarbohydrates(carbs) {
   setCarbs(carbs.target.value)
 }
     function getMealData() {
+      {/* Function to find meal data for correct criteria*/}
     fetch(
-      `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&targetCalories=${calories}` //fix to meet all input criteria
+      `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&targetCalories=${calories}` 
     )
       .then((response) => response.json())
       .then((data) => {

@@ -20,7 +20,8 @@ function Login(){
           history.push("./AccountPage"); // Navigate to the account page
         }
         try{
-            await signInWithEmailAndPassword(auth, email, password);
+          //Attempt to sign in by finding user's email and password (criteria used to log in)
+            await signInWithEmailAndPassword(auth, email, password); //
             console.log("User logged in successfully.");
             toast.success("User logged in successfully!",{
             position: "top-center",
@@ -37,7 +38,7 @@ function Login(){
     function setUserEmail(email) {
         setEmail(email.target.value)
     }
-    function validateEmail() { //THIS MIGHT CHANGE To check for user authentication
+    function validateEmail() {
         if (!email.includes('@')) {
             setEmailError("Please enter a valid email address");
         } else {
@@ -50,6 +51,7 @@ function Login(){
     return(
         <div> 
             <br></br>
+            {/* Section for the login section */}
             <div className="login-container">
                 <div className="login-form-section">
                     <center><h2>Login</h2></center>
@@ -70,10 +72,12 @@ function Login(){
                         />
                         <button type="submit" className="login-account-btn">Login</button>
                     </form>
+                    {/* Bottom section, re-routes to Sign Up page*/}
                     <div className="sign-up-link">
                         Don't have an account? <a href="/SignUp">Sign Up Here</a>
                     </div>
                 </div>
+                {/* Right-hand side of page*/}
                 <div className="login-info-section">
                     <p className="login-header-text"> <b>Recipe Radar</b> </p>
                     <p className="login-subtext">Where Daily Recipes are Simplified</p>

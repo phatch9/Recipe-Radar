@@ -6,7 +6,8 @@ import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AccountPage.css"; // Import the css 
 
-function AccountPage() {
+function AccountPage() { //User's Account Page
+    //All the preferences for each user is by default set to false when an account is created
     const [isVegetarian, setIsVegetarian] = useState(false);
     const [isVegan, setIsVegan] = useState(false);
     const [isGlutenFree, setIsGlutenFree] = useState(false);
@@ -25,14 +26,14 @@ function AccountPage() {
     const [loggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState("");
     const [email, setEmail] = useState("");
-    const fetchUserData = async () => {
+    const fetchUserData = async () => { //Fetching data from the currently logged in user from the Firebase database
         auth.onAuthStateChanged(async (user) => {
             if (user) {
                 setEmail(user.email); // Set the user's email
                 setUserId(user.uid);
                 const docRef = doc(database, "Users", user.uid);
                 const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
+                if (docSnap.exists()) { //If a user exists, set the current constants for the preferences to the user's preferences in the database
                     const userData = docSnap.data();
                     setIsVegan(userData.isVegan);
                     setIsVegetarian(userData.isVegetarian);
@@ -58,11 +59,10 @@ function AccountPage() {
             }
         });
     };
-    const updateUserData = async(keyName) =>{ //keyName = isRestriction/Preference, when called, should give opposite and update the field, will check/uncheck
+    const updateUserData = async(keyName) =>{
         if(loggedIn){
             let data = {}
-        //let keyName = "isVegetarian";
-        switch(keyName){
+        switch(keyName){ //When updating a field, the keyName stores a string containing which preference to update; switch case updates the user's preference depending on which one was inputted
             case "isVegan":
                 data = {"isVegan" : !isVegan};
                 break;
@@ -117,6 +117,7 @@ function AccountPage() {
     },[])
     
     return (
+        //Listing all the preferences onto the website
         <div className="preferences">
             <div className="account-details">
                 <h2 className="header-underline">Account Details:</h2>
@@ -124,6 +125,7 @@ function AccountPage() {
             </div>
             <div>
                 <h2 className="header-underline">Dietary Preference:</h2>
+                {/* Lists all the dietary preferences as checkboxes: if clicked on, it will call the updateUserData function to update the preference; box is checked or not depending on the state of the preference (true or false) */}
                 <label><input type="checkbox" checked={loggedIn && isVegetarian} onChange={() => { updateUserData("isVegetarian"); setIsVegetarian(!isVegetarian);}} /> Vegetarian </label>
                 <label><input type="checkbox" checked={loggedIn && isVegan} onChange={() => { updateUserData("isVegan"); setIsVegan(!isVegan);} }/> Vegan</label>
                 <label><input type="checkbox" checked={loggedIn && isGlutenFree} onChange={() => { updateUserData("isGlutenFree"); setIsGlutenFree(!isGlutenFree);}} /> Gluten Free</label>
@@ -133,6 +135,7 @@ function AccountPage() {
             </div>
             <div>
                 <h2 className="header-underline">Food Allergens:</h2>
+                {/* Same logic as with the dietary preferences div */}
                 <label><input type="checkbox" checked={loggedIn && hasPeanuts} onChange={() => { updateUserData("hasPeanuts"); setHasPeanuts(!hasPeanuts);}} /> Peanuts</label>
                 <label><input type="checkbox" checked={loggedIn && hasTreeNuts} onChange={() => { updateUserData("hasTreeNuts"); setHasTreeNuts(!hasTreeNuts);}} /> Tree Nuts</label>
                 <label><input type="checkbox" checked={loggedIn && hasSoy} onChange={() => { updateUserData("hasSoy"); setHasSoy(!hasSoy);}} /> Soy</label>
