@@ -1,29 +1,41 @@
 ## Recipe_Radar 
 
-Website application using Javascript, ReactJS, FireBase
+A website that allows registered users to generate recipes for daily meals under customizable criteria such as dietary restrictions, allergies, max no. of calories, etc.
 
-**Group W10 Member:**
+
+**Contributors:**
   - Timothy Kim
   - Phat Chau
   - Ryan Tang
 
-**[Building and Running] Use FireBase Database to run the application, use these commands below **
+**Stack**
+
+- Frontend: Reactjs, CSS, HTML
+- Backend: Google Firebase
+- Database: Cloud Firestore
+
+  
+**Instructions for Building and Running the Website **
 
 **Front end:**
+- Download Node.js installer for proper operating system (https://nodejs.org/en/download/)
+- Install Node.js and npm from the installer
+- Clone the repository into system ("git clone https://github.com/phatch9/Recipe-Radar.git")
+- Enter spoonapp directory from repository ("cd spoonapp")
+- Install npm into spoonapp ("npm install")
+- Install additional npm package for routing used in website ("npm install react-router-dom")
+- Run the program ("npm start")
 
-- git clone https://github.com/phatch9/Recipe-Radar.git
+**Backend installation:**
 
-- cd spoonapp
+- Install firebase into spoonapp directory("npm install firebase")
+- Use pre-set backend service (owned by us) OR create your own accessible backend (https://firebase.google.com/docs/web/setup#create-project)
+- Ensure our or your firestore's configuration matches in firebase/firebaseConfig.js
 
-- npm start
+**Database Configuration**
+- Create firestore database into firebase backend (https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
+- Install firestore into spoonapp directory ("npm install firestore")
 
-**For Navigation:**
-
-- npm install react-router-dom
-
-**Database installation:**
-
-- npm install firebase
 
 ### Project Structure
 
