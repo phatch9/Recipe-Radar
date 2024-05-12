@@ -16,7 +16,11 @@ Website application using Javascript, ReactJS, FireBase
 - cd spoonapp
 
 - npm start
-  
+
+**For Navigation:**
+
+- npm install react-router-dom
+
 **Database installation:**
 
 - npm install firebase
