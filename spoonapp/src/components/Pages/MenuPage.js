@@ -46,7 +46,7 @@ function MenuPage() {
                             ...(data.isPescetarian ? ["Pescetarian"] : []),
                         ]
                     });
-                    setIsLoggedIn(true);
+                    setIsLoggedIn(true); //Since docSnap exists, valid user exists, loggedIn becomes true
                 } else {
                     console.log("No user data found");
                 }
@@ -65,7 +65,7 @@ function MenuPage() {
     }
 
     function getMealData() {
-        //API call to retrieve a recipe based off user's saved criteria
+        //API call to retrieve a recipe based off user's saved criteria, only works if user is successfully logged in
         if(loggedIn){
             const apiUrl = `https://api.spoonacular.com/mealplanner/generate?apiKey=64f5e7990ea442e6b3f5587af154aa71&timeFrame=day&intolerances=${userPreferences.allergens.join(',')}&diet=${userPreferences.diet.join(',')}&maxCalories=${calories}&maxProtein=${protein}&maxFiber=${fiber}&maxCarbs=${carbs}&number=10`;
         
@@ -107,6 +107,7 @@ function MenuPage() {
                         </div>
                         <div className="input-container">
                             <label>Max Protein</label>
+                            {/* When finished typing, sets the target value for that paramter to the one user entered*/}
                             <input type="number" placeholder="Max grams of protein" onChange={(e) => setProtein(e.target.value)} />
                         </div>
                         <div className="input-container">
@@ -118,7 +119,7 @@ function MenuPage() {
                             <input type="number" placeholder="Max grams of carbs" onChange={(e) => setCarbs(e.target.value)} />
                         </div>
                     </div>
-                    {/* Button function to generate recipes */}
+                    {/* Button function to generate recipes*/}
                     <button className="btn--recipe" onClick={getMealData}>Generate Recipes</button>
                 </div>
             </section>

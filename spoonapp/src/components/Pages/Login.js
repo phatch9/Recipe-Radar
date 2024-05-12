@@ -38,6 +38,7 @@ function Login(){
     function setUserEmail(email) {
         setEmail(email.target.value)
     }
+    //Function for checking valid email address
     function validateEmail() {
         if (!email.includes('@')) {
             setEmailError("Please enter a valid email address");
@@ -55,6 +56,7 @@ function Login(){
             <div className="login-container">
                 <div className="login-form-section">
                     <center><h2>Login</h2></center>
+                    {/* Same logic as the SignUp, if account is created successfully, sets email*/}
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <input
                             type="email"
@@ -64,6 +66,7 @@ function Login(){
                             onBlur={validateEmail}
                         />
                         <center>{emailError && <div style={{ color: 'red' }}>{emailError}</div>}</center>
+                        {/* Same logic as the SignUp, if account is created successfully, sets password*/}
                         <input
                             type="password"
                             placeholder="Password"

@@ -39,8 +39,8 @@ function AboutUsContent() {
         </p>
       </div>
       <div className="section">
-        {/*Section for all the headshots(bottom of the content section)*/}
       <div className="section"></div>
+       {/*Section for all the headshots(bottom of the content section)*/}
         <h1 className="heading">
           Creators
         </h1>

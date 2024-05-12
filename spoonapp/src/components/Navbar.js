@@ -29,7 +29,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          {/* Navbar logo */}
+          {/* Creating navbar logo */}
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             <div className='logo-container'>
               <img className='logo' src={require("../images/RRlogo.png")} alt="Recipe Radar Logo"></img>

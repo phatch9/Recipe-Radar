@@ -11,7 +11,6 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState(""); // State for success message
     const history = useHistory(); // Initialize useHistory
-
     const setUserEmail = (email) => {
         setEmail(email.target.value);
     };
@@ -73,6 +72,7 @@ function SignUp() {
                     <center><h2>Create Account</h2></center>
                     {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                     <form onSubmit={(e) => handleSubmit(e)}>
+                        {/* If account is created successfully, sets email*/}
                         <input
                             type="email"
                             placeholder="Email Address"
@@ -80,7 +80,9 @@ function SignUp() {
                             onChange={setUserEmail}
                             onBlur={validateEmail}
                         />
+                        {/* Displays email error if error apepars*/}
                         <center>{emailError && <div style={{ color: 'red' }}>{emailError}</div>}</center>
+                        {/* If account is created successfully, sets password*/}
                         <input
                             type="password"
                             placeholder="Password"

@@ -35,13 +35,13 @@ function setCarbohydrates(carbs) {
       });
   }
     return(
-      //Creation of 4 parameter user input boxes
+      //Creation of 4 parameter user input boxes for calories, fiber, protein, and carbs
         <div className = "user_inputs">
             <section className = "selection">
                 <input
                 type = "number"
                 placeholder="Max # of calories"
-                onChange={setCalories}
+                onChange={setCalories} //Each input when activated will run a function that changes state/value of their respective constant
                 />
                 <button>Enter</button>
             </section>

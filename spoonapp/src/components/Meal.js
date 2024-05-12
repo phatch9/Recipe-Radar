@@ -9,7 +9,7 @@ export default function Meal({ meal }) {
 
     useEffect(() => {
         if (meal && meal.id) {
-            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=64f5e7990ea442e6b3f5587af154aa71&includeNutrition=false`;
+            const url = `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=64f5e7990ea442e6b3f5587af154aa71&includeNutrition=false`; //URL containing the API call and its unique key
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -47,6 +47,7 @@ export default function Meal({ meal }) {
             <center><b><div className="meal-title">{meal.title}</div></b></center>
             <img src={imageUrl} alt={meal.title || "Recipe Image"} />
             <ul className="instructions">
+                {/* Displaying the preparation time & number of servings for each recipe*/}
                 <li>Preparation time: {readyInMinutes ? `${readyInMinutes} minutes` : 'N/A'}</li>
                 <li>Number of servings: {servings ? servings : 'N/A'}</li>
             </ul>
